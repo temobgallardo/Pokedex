@@ -24,13 +24,13 @@ namespace Pokedex.Core.ViewModels
             get => _pokemonUrl;
         }
 
-        private IRepository<Models.Entities.Pokedex> _repository;
+        private IRepository _repository;
         public IMvxAsyncCommand GetPokemonsCommand { private set; get; }
         public IMvxAsyncCommand<Models.Entities.Pokemon> PokemonSelectedCommand { private set; get; }
 
         public MvxObservableCollection<Models.Entities.Pokemon> Pokemons { private set; get; }
 
-        public PokedexViewModel(IMvxNavigationService navigationService, IRepository<Models.Entities.Pokedex> repository) : base(navigationService)
+        public PokedexViewModel(IMvxNavigationService navigationService, IRepository repository) : base(navigationService)
         {
             Title = "Pokedex";
             _repository = repository;
@@ -41,15 +41,12 @@ namespace Pokedex.Core.ViewModels
 
         private async Task OnPokemonSelected(Models.Entities.Pokemon pokemon) 
         {
-            if (pokemon == null)
-                return;
-
             await _navigationService.Navigate<PokemonDetailViewModel, Models.Entities.Pokemon>(pokemon);
         }
 
         private async Task GetPokemons()
         {
-            var pokedex = await _repository.GetDataAsync();
+            var pokedex = await _repository.GetDataAsync<Models.Entities.Pokedex>();
 
             if (pokedex != null) {
                 var pokemons = pokedex.results;

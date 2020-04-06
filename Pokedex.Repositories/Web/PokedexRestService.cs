@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pokedex.Repositories.Web
 {
-    public class PokedexRestService : IRepository<Models.Entities.Pokedex>
+    public class PokedexRestService : IRepository
     {
         HttpClient _client;
         private string _uri = @"https://pokeapi.co/api/v2/pokemon/";
@@ -16,30 +16,30 @@ namespace Pokedex.Repositories.Web
             _client = new HttpClient();
         }
 
-        public async Task<Models.Entities.Pokedex> GetDataAsync()
+        public async Task<T> GetDataAsync<T>() where T : class, new()
         {
             var uri = new Uri(_uri);
             var response = await _client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<Models.Entities.Pokedex>(content);
+                return JsonConvert.DeserializeObject<T>(content);
             }
 
-            return new Models.Entities.Pokedex();
+            return new T();
         }
 
-        public async Task<Models.Entities.PokemonDetail> GetDataAsync(string uriNew)
+        public async Task<T> GetDataAsync<T>(string newUri) where T : class, new()
         {
-            var uri = new Uri(uriNew);
+            var uri = new Uri(newUri);
             var response = await _client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<Models.Entities.PokemonDetail>(content);
+                return JsonConvert.DeserializeObject<T>(content);
             }
 
-            return new Models.Entities.PokemonDetail();
+            return new T();
         }
 
     }

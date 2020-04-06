@@ -19,7 +19,7 @@ namespace Pokedex.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRepository<Models.Entities.Pokedex>, PokedexRestService>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRepository, PokedexRestService>();
 
             RegisterAppStart<PokedexViewModel>();
         }

@@ -4,6 +4,8 @@ namespace Pokedex.Models.Entities
 {
     public class Pokemon
     {
+        public Pokemon() { }
+
         public Pokemon(string name, string url)
         {
             this.name = name;

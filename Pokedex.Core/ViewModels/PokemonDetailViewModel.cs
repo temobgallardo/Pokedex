@@ -4,6 +4,7 @@ using MvvmCross.ViewModels;
 using Pokedex.Repositories.Interfaces;
 using System.Threading.Tasks;
 using Pokedex.Models.Entities;
+using System;
 
 namespace Pokedex.Core.ViewModels
 {
@@ -19,7 +20,7 @@ namespace Pokedex.Core.ViewModels
         public Models.Entities.PokemonDetail pokemonDetail;
 
 
-        private IRepository<Models.Entities.PokemonDetail> _repository;
+        private IRepository _repository;
         public IMvxAsyncCommand GoBackCommand { get; set; }
 
         // TODO: Why the repositorie's initialization throw and exception of type MvvmCross.Exceptions.MvxException: 'Failed to construct and initialize ViewModel for type Pokedex.Core.ViewModels.PokemonDetailViewModel from locator MvxDefaultViewModelLocator - check InnerException for more information'
@@ -36,7 +37,9 @@ namespace Pokedex.Core.ViewModels
 
         public void Prepare(Pokemon parameter)
         {
-            Detail = parameter.detail;            
+            Detail = @"Pokemon Details" + Environment.NewLine +
+                    "Name = " + parameter.name + Environment.NewLine +
+                    "Url = " + parameter.url; ;
         }
     }
 }
