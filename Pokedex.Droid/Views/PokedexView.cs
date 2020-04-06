@@ -25,13 +25,9 @@ namespace Pokedex.Droid.Views
             var decorationItem = new DividerItemDecoration(recyclerView.Context, 1);
             recyclerView.AddItemDecoration(decorationItem);
             _btnGetPokemons = FindViewById<Button>(Resource.Id.btn_getPokemons);
-
-            /**
-            _btnGetPokemons.SetOnClickListener{
-                
-            };
-    */
         }
+
+
 
     }
 }

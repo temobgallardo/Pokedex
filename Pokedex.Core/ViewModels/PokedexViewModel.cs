@@ -57,5 +57,10 @@ namespace Pokedex.Core.ViewModels
                 }
             }                        
         }
+
+        public override async Task Initialize()
+        {
+            await GetPokemons(); 
+        }
     }
 }
