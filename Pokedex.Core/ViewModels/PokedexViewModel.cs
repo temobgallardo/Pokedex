@@ -41,7 +41,8 @@ namespace Pokedex.Core.ViewModels
 
         private async Task OnPokemonSelected(Models.Entities.Pokemon pokemon) 
         {
-            await _navigationService.Navigate<PokemonDetailViewModel, Models.Entities.Pokemon>(pokemon);
+            var pokemonDetail = await _repository.GetDataAsync<Models.Entities.PokemonDetail>(pokemon.url);
+            await _navigationService.Navigate<PokemonDetailViewModel, Models.Entities.PokemonDetail>(pokemonDetail);
         }
 
         private async Task GetPokemons()
@@ -56,7 +57,5 @@ namespace Pokedex.Core.ViewModels
                 }
             }                        
         }
-
-
     }
 }

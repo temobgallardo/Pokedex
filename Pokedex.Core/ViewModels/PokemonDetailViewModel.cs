@@ -8,7 +8,7 @@ using System;
 
 namespace Pokedex.Core.ViewModels
 {
-    public class PokemonDetailViewModel: ParentViewModel, IMvxViewModel<Models.Entities.Pokemon>
+    public class PokemonDetailViewModel: ParentViewModel, IMvxViewModel<Models.Entities.PokemonDetail>
     {
         private string _detail;
         public string Detail
@@ -16,15 +16,18 @@ namespace Pokedex.Core.ViewModels
             private set => SetProperty(ref _detail, value);
             get => _detail;
         }
-        private Models.Entities.PokemonDetail _pokemonDetail;
-        public Models.Entities.PokemonDetail pokemonDetail;
 
+        private string _url;
+        public string Url
+        {
+            private set => SetProperty(ref _url, value);
+            get => _url;
+        }
 
-        private IRepository _repository;
         public IMvxAsyncCommand GoBackCommand { get; set; }
 
         // TODO: Why the repositorie's initialization throw and exception of type MvvmCross.Exceptions.MvxException: 'Failed to construct and initialize ViewModel for type Pokedex.Core.ViewModels.PokemonDetailViewModel from locator MvxDefaultViewModelLocator - check InnerException for more information'
-        public PokemonDetailViewModel(IMvxNavigationService navigation /*, IRepository<Models.Entities.PokemonDetail> repository*/) : base(navigation)
+        public PokemonDetailViewModel(IMvxNavigationService navigation/*, IRepository repository*/) : base(navigation)
         {
             //_repository = repository;
             GoBackCommand = new MvxAsyncCommand(Back);
@@ -35,11 +38,14 @@ namespace Pokedex.Core.ViewModels
             await _navigationService.Close(this);
         }
 
-        public void Prepare(Pokemon parameter)
+        public async void Prepare(PokemonDetail parameter)
         {
+            _url = parameter.sprites.front_shiny;
             Detail = @"Pokemon Details" + Environment.NewLine +
                     "Name = " + parameter.name + Environment.NewLine +
-                    "Url = " + parameter.url; ;
+                    "Height = " + parameter.height + Environment.NewLine +
+                    "Weight = " + parameter.weight + Environment.NewLine +
+                    ""; 
         }
     }
 }
