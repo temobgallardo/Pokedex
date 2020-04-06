@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2">
+    <MvvmCross.Droid.Support.V7.RecyclerView.MvxRecyclerView
+        android:id="@+id/rv_pokedex"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.8"
+        app:MvxBind="ItemsSource Pokemons;ItemClick PokemonSelectedCommand"
+        app:MvxItemTemplate="@layout/activity_pokemon_row"/>
+    <Button
+        android:id="@+id/btn_getPokemons"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:text="@string/btn_getPokemons"
+        app:MvxBind="Click GetPokemonsCommand"
+    android:contentDescription="@string/btn_getPokemons_description"/>
+</LinearLayout>
