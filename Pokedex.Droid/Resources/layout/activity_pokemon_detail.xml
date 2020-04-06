@@ -5,11 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
         <FFImageLoading.Cross.MvxCachedImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        app:MvxBind="ImagePath Url"/>
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:MvxBind="ImagePath Url"
+        android:layout_gravity="center_vertical"/>
         <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:MvxBind="Text Detail"/>
+        android:textSize="18sp"
+        app:MvxBind="Text Detail"
+        android:layout_gravity="center_vertical"/>
 </LinearLayout>

@@ -43,9 +43,8 @@ namespace Pokedex.Core.ViewModels
             _url = parameter.sprites.front_shiny;
             Detail = @"Pokemon Details" + Environment.NewLine +
                     "Name = " + parameter.name + Environment.NewLine +
-                    "Height = " + parameter.height + Environment.NewLine +
-                    "Weight = " + parameter.weight + Environment.NewLine +
-                    ""; 
+                    "Height = " + parameter.height + " decimetres" + Environment.NewLine +
+                    "Weight = " + parameter.weight + " hectograms"; 
         }
     }
 }
