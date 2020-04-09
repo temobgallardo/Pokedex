@@ -1,14 +1,13 @@
 ﻿using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using Pokedex.Repositories.Interfaces;
 using System.Threading.Tasks;
 using Pokedex.Models.Entities;
 using System;
 
 namespace Pokedex.Core.ViewModels
 {
-    public class PokemonDetailViewModel: ParentViewModel, IMvxViewModel<Models.Entities.PokemonDetail>
+    public class PokemonDetailViewModel: ParentViewModel, IMvxViewModel<PokemonDetail>
     {
         private string _detail;
         public string Detail
@@ -31,6 +30,7 @@ namespace Pokedex.Core.ViewModels
         {
             //_repository = repository;
             GoBackCommand = new MvxAsyncCommand(Back);
+            Title = "Pokemon Details";
         }        
 
         public async Task Back()
@@ -38,11 +38,10 @@ namespace Pokedex.Core.ViewModels
             await _navigationService.Close(this);
         }
 
-        public async void Prepare(PokemonDetail parameter)
+        public void Prepare(PokemonDetail parameter)
         {
             _url = parameter.sprites.front_shiny;
-            Detail = @"Pokemon Details" + Environment.NewLine +
-                    "Name = " + parameter.name + Environment.NewLine +
+            Detail = @"Name = " + parameter.name + Environment.NewLine +
                     "Height = " + parameter.height + " decimetres" + Environment.NewLine +
                     "Weight = " + parameter.weight + " hectograms"; 
         }

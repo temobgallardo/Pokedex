@@ -8,13 +8,10 @@ namespace Pokedex.Repositories.Web
 {
     public class PokedexRestService : IRepository
     {
-        HttpClient _client;
+        private static readonly HttpClient _client = new HttpClient();
         private string _uri = @"https://pokeapi.co/api/v2/pokemon/";
 
-        public PokedexRestService() 
-        {
-            _client = new HttpClient();
-        }
+        public PokedexRestService() { }
 
         public async Task<T> GetDataAsync<T>() where T : class, new()
         {

@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="2">
+    android:orientation="vertical">
     <MvvmCross.Droid.Support.V7.RecyclerView.MvxRecyclerView
         android:id="@+id/rv_pokedex"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.8"
+        android:layout_height="match_parent"
         app:MvxBind="ItemsSource Pokemons;ItemClick PokemonSelectedCommand"
         app:MvxItemTemplate="@layout/activity_pokemon_row"/>
 </LinearLayout>

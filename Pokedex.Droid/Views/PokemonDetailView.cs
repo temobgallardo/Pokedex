@@ -9,7 +9,7 @@ namespace Pokedex.Droid.Views
 {
     [MvxActivityPresentation]
     [Activity(Theme = "@style/AppTheme", MainLauncher = false)]
-    public class PokemonDetail : MvxAppCompatActivity<PokemonDetailViewModel>
+    public class PokemonDetailView : MvxAppCompatActivity<PokemonDetailViewModel>
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
