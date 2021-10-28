@@ -28,7 +28,6 @@ namespace Pokedex.Core.ViewModels
         private IRepository _repository;
         public IMvxAsyncCommand GetPokemonsCommand { private set; get; }
         public IMvxCommand<string> SearchPokemonCommand { private set; get; }
-        public IMvxCommand GetCachePokemons { private set; get; }
         public IMvxAsyncCommand<Models.Entities.Pokemon> PokemonSelectedCommand { private set; get; }
 
 
